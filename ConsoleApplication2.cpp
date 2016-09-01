@@ -11,6 +11,7 @@
 using namespace std;
 
 bool DefineInputIntegrity(string);
+string checkInputIntegrity();
 
 //I seriously didn't know how classes in C++ work until I started this
 //Why not just use a class to hold all my stuff in it?
@@ -41,12 +42,13 @@ void Company::CalculateTaxes() {
 void Company::Output() {
 	cout << "\n\n\t" << month << " " << year << endl;
 	cout << "---------------------------" << endl;
-	cout << "Sales for this month:  " << income << endl;
-	cout << "Total:                 " << taxArray[2] + income << endl << endl;
-	cout << "County Sales Tax:      " << taxArray[1] << endl;
-	cout << "State Sales Tax:       " << taxArray[0] << endl;
-	cout << "Total of Tax:          " << taxArray[2] << endl;
+	cout << "Sales for this month:  " << setprecision(2) << fixed << income << endl;
+	cout << "Total:                 " << setprecision(2) << fixed << taxArray[2] + income << endl << endl;
+	cout << "County Sales Tax:      " << setprecision(2) << fixed << taxArray[1] << endl;
+	cout << "State Sales Tax:       " << setprecision(2) << fixed << taxArray[0] << endl;
+	cout << "Total of Tax:          " << setprecision(2) << fixed << taxArray[2] << endl;
 }
+
 
 
 int main() {
@@ -59,7 +61,7 @@ int main() {
 		float in;
 
 		cout << "\nPlease enter a month (string)" << endl;
-		cin >> s;
+		s = checkInputIntegrity();
 		cout << "\nPlease enter the year (integer)" << endl;
 		cin >> y;
 		cout << "\nPlease enter the income for the month (float)" << endl;
@@ -82,11 +84,7 @@ int main() {
 		}
 	}
 
-	cout << "\nThanks for using the great program" << endl;
-
-	cin.clear();
-	cin.ignore(256,'\n'); //Actually let the user look at the program's output before it closes
-
+	system("pause");
     return 0;
 }
 
@@ -103,14 +101,32 @@ bool DefineInputIntegrity(string inputIntegrity) {
 	}
 }
 
+string checkInputIntegrity() {
+	string s;
+	/*cin >> s;
+	if (cin.fail()) {
+		cout << "Please input the correct data type." << endl;
+		cin.clear();
+		cin.ignore(256, '\n');
+		checkInputIntegrity();
+	}
+	else {
+		return s;
+	}*/
+
+	while (cout << "" && !(cin >> s)) {
+		cin.clear();
+		cin.ignore(256, '\n');
+		cout << "Please input the correct data type." << endl;
+	}
+
+	return s;
+}
+
 /*
-Try entering a letter into the year input
-in all honesty, c++ is more than robust enough that I don't need a try catch block
+	Try entering a letter into the year input
 	since I don't want to throw exceptions all over the place ---> http://stackoverflow.com/questions/10349857/how-to-handle-wrong-data-type-input
 	that is a input validation function that should work
 
-TODO: input validation for the program input
-	  rounding numbers - yeah idk how to do that, cout.setprecision may work, if you can find out the number of digits in a number then add 2 :^)
-	  really just that infinite loop when you enter a string into the year input, idk why it does that only there
-
+	TODO: input validation for the program input
 */
