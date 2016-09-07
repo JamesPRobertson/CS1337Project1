@@ -1,5 +1,4 @@
 //James Robertson, CS 1337.503
-//	Yeah don't copy this it's pretty busted
 //Started on 8/29/2016
 
 
@@ -15,7 +14,7 @@ string checkInputIntegrity();
 float checkINTputIntegrity();
 
 //I seriously didn't know how classes in C++ work until I started this
-//Why not just use a class to hold all my stuff in it?
+//Why wouldn't I just create a class to hold all my stuff in?
 class Company {
 	string month;
 	int year;
@@ -80,6 +79,7 @@ int main() {
 
 		DefineInputIntegrity(validationInput);
 
+		//While(true) is not too scary :^)
 		if (validationInput.compare("n") == 0) {
 			break;
 		}
@@ -139,11 +139,3 @@ float checkINTputIntegrity() {
 
 	return s;
 }
-
-/*
-	Try entering a letter into the year input
-	since I don't want to throw exceptions all over the place ---> http://stackoverflow.com/questions/10349857/how-to-handle-wrong-data-type-input
-	that is a input validation function that should work
-
-	TODO: input validation for the program input
-*/
