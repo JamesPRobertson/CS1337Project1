@@ -10,8 +10,8 @@
 using namespace std;
 
 bool DefineInputIntegrity(string);
-string checkInputIntegrity();
-float checkINTputIntegrity();
+string CheckInputIntegrity();
+float CheckINTputIntegrity();
 
 //I seriously didn't know how classes in C++ work until I started this
 //Why wouldn't I just create a class to hold all my stuff in?
@@ -61,11 +61,11 @@ int main() {
 		float in;
 
 		cout << "\nPlease enter a month (string)" << endl;
-		s = checkInputIntegrity();
+		s = CheckInputIntegrity();
 		cout << "\nPlease enter the year (integer)" << endl;
-		y = checkINTputIntegrity();
+		y = CheckINTputIntegrity();
 		cout << "\nPlease enter the income for the month (float)" << endl;
-		in = checkINTputIntegrity();
+		in = CheckINTputIntegrity();
 
 		//We even start a new company every iteration
 		Company foo(s, y, in);
@@ -75,7 +75,7 @@ int main() {
 		
 		// --> Foo the entrepreneur
 		cout << "\n\nWould you care to calculate another month? [y/n]" << endl;
-		validationInput = checkInputIntegrity();
+		validationInput = CheckInputIntegrity();
 
 		DefineInputIntegrity(validationInput);
 
@@ -103,7 +103,7 @@ bool DefineInputIntegrity(string inputIntegrity) {
 }
 
 //Only works on C++11 and higher - lets hope it works :^)
-string checkInputIntegrity() {
+string CheckInputIntegrity() {
 	string s;
 	
 	while (true) {
@@ -120,7 +120,7 @@ string checkInputIntegrity() {
 	}
 }
 
-float checkINTputIntegrity() {
+float CheckINTputIntegrity() {
 	float s;
 
 	while (true) {
