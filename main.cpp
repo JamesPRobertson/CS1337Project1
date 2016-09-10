@@ -3,9 +3,10 @@
 
 
 //am I allowed to import this much stuff?
-#include <iostream>;
-#include <string>;
-#include <iomanip>;
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <cstdlib>
 
 using namespace std;
 
@@ -105,7 +106,7 @@ bool DefineInputIntegrity(string inputIntegrity) {
 //Only works on C++11 and higher - lets hope it works :^)
 string CheckInputIntegrity() {
 	string s;
-	
+
 	while (true) {
 		cin >> s;
 
