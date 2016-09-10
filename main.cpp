@@ -103,22 +103,44 @@ bool DefineInputIntegrity(string inputIntegrity) {
 	}
 }
 
-//Only works on C++11 and higher - lets hope it works :^)
+
+//Guarenteed method only works on C++11 and higher
+//WHY DO WE USE C++98
 string CheckInputIntegrity() {
 	string s;
 
 	while (true) {
 		cin >> s;
 
+		for (int i = 0; i < s.length(); i++) {
+			char foo = s[i];
+
+			if (foo >= 48 && foo <= 57 ) {
+				break;
+			}
+			else if(i == s.length() - 1){
+				return s;
+			}
+		}
+
+		cout << "Please input a string without a number." << endl;
+	}
+
+	//Hey look its the more robust and vastly superior method
+	//too bad I can't use it
+	/*while (true) {
+		cin >> s;
+
 		try {
 			int i = stoi(s);
+			
 		}
 		catch (invalid_argument) {
 			return s;
 		}
 
 		cout << "Please input a string without a number" << endl;
-	}
+	}*/
 }
 
 float CheckINTputIntegrity() {
