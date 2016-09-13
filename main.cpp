@@ -7,6 +7,7 @@
 #include <string>
 #include <iomanip>
 #include <cstdlib>
+#include <fstream>
 
 using namespace std;
 
@@ -15,7 +16,8 @@ string CheckInputIntegrity();
 float CheckINTputIntegrity();
 
 //I seriously didn't know how classes in C++ work until I started this
-//Why wouldn't I just create a class to hold all my stuff in?
+//		Why wouldn't I just create a class to hold all my stuff in?
+//		Instead of passing pointers to arrays everywhere just make a class :^)
 class Company {
 	string month;
 	int year;
@@ -42,18 +44,17 @@ void Company::CalculateTaxes() {
 
 void Company::Output() {
 	cout << "\n\n\t" << month << " " << year << endl;
-	cout << "---------------------------" << endl;
-	cout << "Sales for this month:  " << setprecision(2) << fixed << income << endl;
-	cout << "Total:                 " << setprecision(2) << fixed << taxArray[2] + income << endl << endl;
-	cout << "County Sales Tax:      " << setprecision(2) << fixed << taxArray[1] << endl;
-	cout << "State Sales Tax:       " << setprecision(2) << fixed << taxArray[0] << endl;
-	cout << "Total of Tax:          " << setprecision(2) << fixed << taxArray[2] << endl;
+	cout << "-----------------------------" << endl;
+	cout << "Total including tax:    " << setprecision(2) << fixed << taxArray[2] + income << endl;
+	cout << "Sales for this month:   " << setprecision(2) << fixed << income << endl << endl;
+	cout << "County Sales Tax:       " << setprecision(2) << fixed << taxArray[1] << endl;
+	cout << "State Sales Tax:        " << setprecision(2) << fixed << taxArray[0] << endl;
+	cout << "Total of Tax:           " << setprecision(2) << fixed << taxArray[2] << endl;
 }
 
 
 
 int main() {
-	//Yeah I know, while(true) is scary but I don't care
 	while (true) {
 		//Input is re-declared every loop to prevent any type of carry over from the past iteration
 		string validationInput;
@@ -90,7 +91,7 @@ int main() {
     return 0;
 }
 
-//I never thought I would willingly use recursion after I left APCS, oh what have I become
+//I like recursion
 bool DefineInputIntegrity(string inputIntegrity) {
 	if (inputIntegrity.compare("y") == 0 || inputIntegrity.compare("n") == 0) {
 		return true;
@@ -103,9 +104,7 @@ bool DefineInputIntegrity(string inputIntegrity) {
 	}
 }
 
-
 //Guarenteed method only works on C++11 and higher
-//WHY DO WE USE C++98
 string CheckInputIntegrity() {
 	string s;
 
@@ -127,7 +126,7 @@ string CheckInputIntegrity() {
 	}
 
 	//Hey look its the more robust and vastly superior method
-	//too bad I can't use it
+	//too bad I don't think I can use it
 	/*while (true) {
 		cin >> s;
 
