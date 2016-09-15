@@ -11,7 +11,7 @@
 
 using namespace std;
 
-bool DefineInputIntegrity(string);
+bool DefineInputIntegrity();
 string CheckInputIntegrity();
 float CheckINTputIntegrity();
 
@@ -57,7 +57,7 @@ void Company::Output() {
 int main() {
 	while (true) {
 		//Input is re-declared every loop to prevent any type of carry over from the past iteration
-		string validationInput;
+		bool validationInput;
 		string s;
 		int y;
 		float in;
@@ -77,12 +77,11 @@ int main() {
 		
 		// --> Foo the entrepreneur
 		cout << "\n\nWould you care to calculate another month? [y/n]" << endl;
-		validationInput = CheckInputIntegrity();
+		validationInput = DefineInputIntegrity();
 
-		DefineInputIntegrity(validationInput);
+		
 
-		//While(true) is not too scary :^)
-		if (validationInput.compare("n") == 0) {
+		if (!validationInput) {
 			break;
 		}
 	}
@@ -91,16 +90,20 @@ int main() {
     return 0;
 }
 
-//I like recursion
-bool DefineInputIntegrity(string inputIntegrity) {
-	if (inputIntegrity.compare("y") == 0 || inputIntegrity.compare("n") == 0) {
-		return true;
-	}
-	else {
-		cout << "Please input y or n" << endl;
-		cin >> inputIntegrity;
+bool DefineInputIntegrity() {
+	string s;
 
-		DefineInputIntegrity(inputIntegrity);
+	while (true) {
+		cin >> s;
+
+		if (s.compare("n") == 0) {
+			return false;
+		}
+		else if (s.compare("y") == 0) {
+			return true;
+		}
+
+		cout << "Please input y or n" << endl;
 	}
 }
 
